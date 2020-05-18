@@ -4,13 +4,13 @@ HTML=$(SRC:.md=.html)
 
 $(info PDF and HTML rendering has been tested with pandoc version 1.13.2.1, some older versions are known to produce very poor output, please ensure your pandoc is recent enough.)
 
-all: qctools.html qctools.pdf
+all: $(HTML) $(PDF)
 	
-qctools.html: qctools.md
+$(HTML): $(PDF)
 	pandoc -o "$@" "$<"
 
-qctools.pdf:  qctools.md
-	pandoc -o "$@" "$<" --latex-engine=xelatex
+$(PDF): $(PDF)
+	pandoc -o "$@" "$<" --pdf-engine=xelatex
 
 clean:
-	rm -f qctools.pdf qctools.html
+	rm -f $(HTML) $(PDF)
