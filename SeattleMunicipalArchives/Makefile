@@ -6,10 +6,10 @@ $(info PDF and HTML rendering has been tested with pandoc version 1.13.2.1, some
 
 all: $(HTML) $(PDF)
 	
-$(HTML): $(PDF)
+$(HTML): $(SRC)
 	pandoc -o "$@" "$<"
 
-$(PDF): $(PDF)
+$(PDF): $(SRC)
 	pandoc -o "$@" "$<" --pdf-engine=xelatex
 
 clean:
